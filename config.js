@@ -1,3 +1,5 @@
+//Put all your configurations here
+
 module.exports= {
     //walky configurations
     walkyConf:{
