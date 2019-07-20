@@ -1,9 +1,9 @@
 var configuration = require('./config')
 var express = require('express');
 var expressroutes = express.Router();
-var walky = require('pirov2-plugins-walky')(configuration.walkyConf);
-//var walky = require('./walky.js')();
-var streamer = require('pirov2-plugins-avstreamer')(configuration.avstreamerConf);
+var walky = require('pirov2-plugins-walky')();//init with config or defaults will be applied
+//var walky = require('./walky.js')(configuration.walkyConf);
+var streamer = require('pirov2-plugins-avstreamer')();//init with config or defaults will be applied
 //var streamer = require('./avstreamer.js')(configuration.avstreamerConf);
 
 var iosockroutes = function (io) {
@@ -21,8 +21,8 @@ expressroutes.use(function timeLog (req, res, next) {
 expressroutes.get('/', function (req, res) {
     res.send('we will serve the browser version of app on this endpoint')
   });
-
-expressroutes.get(configuration.avstreamerConf.recordingFolder + '/:name', function (req, res, next) {
+// this route for serving the recorded files
+expressroutes.get('/recordings' + '/:name', function (req, res, next) {
     var options = {
         root: configuration.avstreamerConf.recordingFolder, // this should be same as passed to avstreamer
         dotfiles: 'deny',
