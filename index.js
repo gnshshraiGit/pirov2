@@ -24,7 +24,7 @@ expressroutes.get('/', function (req, res) {
 
 expressroutes.get(configuration.avstreamerConf.recordingFolder + '/:name', function (req, res, next) {
     var options = {
-        root: __dirname + configuration.avstreamerConf.recordingFolder,
+        root: configuration.avstreamerConf.recordingFolder, // this should be same as passed to avstreamer
         dotfiles: 'deny',
         headers: {
         'x-timestamp': Date.now(),
