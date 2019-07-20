@@ -1,6 +1,6 @@
 {
   "name": "pirov2",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "internet controlled robotic rover on raspberry pi ",
   "main": "main.js",
   "scripts": {
@@ -28,6 +28,8 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "node-ssdp": "^4.0.0",
+    "pirov2-plugins-avstreamer": "^1.0.1",
+    "pirov2-plugins-walky": "^1.0.1",
     "socket.io": "^2.2.0"
   }
 }

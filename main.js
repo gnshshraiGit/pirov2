@@ -1,8 +1,11 @@
-var app = require('express')();
-var server = require('http').createServer(app);
+var index = require('./index');
+var express = require('express')();
+var server = require('http').createServer(express);
 var SSDP = require('node-ssdp').Server;
 var io = require('socket.io')(server);
-var ioroute = require('./index')(io); // all routes are setup here
+index.iosockRoutes(io); // setup iosocket routes
+express.use('/app', index.expressRoutes); // routes for http requests
+
 // adding our unique service name (usn) and unique device name (udn) for device type identification
 var SSDPServer = new SSDP({allowWildcards:true , udn:'f40c2981-7329-40b7-8b04-2837aecfb8'});
 
