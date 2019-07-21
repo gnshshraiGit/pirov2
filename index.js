@@ -5,11 +5,14 @@ var walky = require('pirov2-plugins-walky')();//init with config or defaults wil
 //var walky = require('./walky.js')(configuration.walkyConf);
 var streamer = require('pirov2-plugins-avstreamer')();//init with config or defaults will be applied
 //var streamer = require('./avstreamer.js')(configuration.avstreamerConf);
+var ambient = require('pirov2-plugins-ambient')();//init with config or defaults will be applied
+//var ambient = require('./ambient.js')(configuration.ambientConf);
 
 var iosockroutes = function (io) {
     // Put all your socketio routes here, check plugins page on git or npm to see samples
     io.of('/walky').on('connection',walky);
     io.of('/avstream').on('connection',streamer);
+    io.of('/ambient').on('connection',ambient);
 }
 
 // middleware providing rout to handle http requests

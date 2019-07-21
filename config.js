@@ -43,6 +43,11 @@ module.exports= {
         startRecordEvent: 'record',
         recordingDoneEvent: 'recordingdone',
         recordingErrEvent: 'recordingErr'
-    }
+    },
+    ambientConf: {
+        ambientEvent: 'ambientdata',
+        i2cBusNo   : 1, 
+        i2cAddress : 0x76
+      }
     
 }

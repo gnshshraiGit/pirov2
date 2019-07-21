@@ -28,8 +28,9 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "node-ssdp": "^4.0.0",
+    "pirov2-plugins-ambient": "^1.0.1",
     "pirov2-plugins-avstreamer": "^1.0.2",
-    "pirov2-plugins-walky": "^1.0.1",
+    "pirov2-plugins-walky": "^1.0.2",
     "socket.io": "^2.2.0"
   }
 }
