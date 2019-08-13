@@ -1,6 +1,6 @@
 {
   "name": "pirov2",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "internet controlled robotic rover on raspberry pi ",
   "main": "main.js",
   "scripts": {
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/gnshshraiGit/pirov2#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "node-ssdp": "^4.0.0",
     "pirov2-plugins-ambient": "^1.0.1",

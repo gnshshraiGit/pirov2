@@ -38,7 +38,7 @@ module.exports= {
         recordingTime: 60, // time to record in seconds 
         recordingFormat: 'matroska',
         recordingFolder: '/home/pi/pirov2/recordings', // where the recorded videos will saved, absolute path
-        recordingHoldTime: 10, // to keep the recordings in above folder in minutes
+        recordingHoldTime: 10, // to keep the recordings in above folder for x minutes
         //EventNames
         startRecordEvent: 'record',
         recordingDoneEvent: 'recordingdone',
@@ -48,6 +48,38 @@ module.exports= {
         ambientEvent: 'ambientdata',
         i2cBusNo   : 1, 
         i2cAddress : 0x76
-      }
+    },
+    //UI Config , this can be detached and put to the server on which the Angular app is running, but we have to use the full URLs
+    uiConfig: [
+        {
+            serviceType:'avstreamer', //Important property for angular service initialization
+            sockUrl:'http://192.168.1.11:8080/avstream', // socketIO endpoint for avstreamer
+            getRecordingUrl:'http://192.168.1.11:8080/app/recordings/',
+            videoUrl: 'http://192.168.1.11:8090/webcamvid.mjpeg',
+            audioUrl: 'http://192.168.1.11:8090/webcamsound.mp3',
+            enabled: true, //Important property for angular service initialization
+            startRecordEvent: 'record',
+            recordingDoneEvent: 'recordingdone',
+            recordingErrEvent: 'recordingErr'
+        },
+        {
+            serviceType:'walky', //Important property for angular service initialization
+            sockUrl:'http://192.168.1.11:8080/walky', // socketIO endpoint for walky 
+            enabled: true, //Important property for angular service initialization
+            goFwdEvent: "goFwd", // Client triggered event to go Forward
+            goBkdEvent: "goBkd", // Client triggered event to go Backward
+            goLftEvent: "goLft", // Client triggered event to go Left
+            goRitEvent: "goRit", // Client triggered event to go Right
+            stopEvent: "stop", // Client triggered event to Stop
+            servingEvent: "serving", // Server triggered event to let client know of socketID controlling walky
+            blockDetectEvent: "blockdetected" // Server triggered event to send the front block distance detected 
+        },
+        {
+            serviceType:'ambient', //Important property for angular service initialization
+            sockUrl:'http://192.168.1.11:8080/ambient', // socketIO endpoint for ambient
+            enabled: true, //Important property for angular service initialization
+            ambientEvent: 'ambientdata'
+        }
+    ]
     
 }

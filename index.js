@@ -1,11 +1,12 @@
 var configuration = require('./config')
 var express = require('express');
+var cors = require('cors');
 var expressroutes = express.Router();
-var walky = require('pirov2-plugins-walky')();//init with config or defaults will be applied
+var walky = require('pirov2-plugins-walky')(configuration.walkyConf);//init with config or defaults will be applied
 //var walky = require('./walky.js')(configuration.walkyConf);
-var streamer = require('pirov2-plugins-avstreamer')();//init with config or defaults will be applied
+var streamer = require('pirov2-plugins-avstreamer')(configuration.avstreamerConf);//init with config or defaults will be applied
 //var streamer = require('./avstreamer.js')(configuration.avstreamerConf);
-var ambient = require('pirov2-plugins-ambient')();//init with config or defaults will be applied
+var ambient = require('pirov2-plugins-ambient')(configuration.ambientConf);//init with config or defaults will be applied
 //var ambient = require('./ambient.js')(configuration.ambientConf);
 
 var iosockroutes = function (io) {
@@ -20,10 +21,13 @@ expressroutes.use(function timeLog (req, res, next) {
     console.log('Time: ', Date.now())
     next()
   });
-  // define the home page route
+
+//Setting Static route
+expressroutes.use(express.static(__dirname + '/dist/pirov2-webapp'));
+// define the home page route
 expressroutes.get('/', function (req, res) {
-    res.send('we will serve the browser version of app on this endpoint')
-  });
+    res.sendFile(path.resolve('index.html'));
+});
 // this route for serving the recorded files
 expressroutes.get('/recordings' + '/:name', function (req, res, next) {
     var options = {
@@ -44,6 +48,10 @@ expressroutes.get('/recordings' + '/:name', function (req, res, next) {
         }
     });
 });
+
+expressroutes.get('/uiconfig', cors(), function (req, res) {
+    res.json(configuration.uiConfig);
+  });
 
 module.exports = {
     iosockRoutes: iosockroutes,
