@@ -10,8 +10,14 @@ index.iosockRoutes(io); // setup iosocket routes
 app.use(express.static(__dirname + '/dist/pirov2-webapp'))
 app.use('/app', index.expressRoutes); // routes for http requests
 
+//used for SSDP/uPnP service dicovery
+locationObj = {
+    protocol:"http://",
+    port:8080,
+    path:"/app/uiconfig"
+}
 // adding our unique service name (usn) and unique device name (udn) for device type identification
-var SSDPServer = new SSDP({allowWildcards:true , udn:'f40c2981-7329-40b7-8b04-2837aecfb8'});
+var SSDPServer = new SSDP({allowWildcards:true , udn:'My Pirov2', location: locationObj});
 
 SSDPServer.addUSN('pirov2');
 
