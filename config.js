@@ -53,10 +53,10 @@ module.exports= {
     uiConfig: [
         {
             serviceType:'avstreamer', //Important property for angular service initialization
-            sockUrl:'http://192.168.1.11:8080/avstream', // socketIO endpoint for avstreamer
-            getRecordingUrl:'http://192.168.1.11:8080/app/recordings/',
-            videoUrl: 'http://192.168.1.11:8090/webcamvid.mjpeg',
-            audioUrl: 'http://192.168.1.11:8090/webcamsound.mp3',
+            sockUrl:'http://192.168.1.19:8080/avstream', // socketIO endpoint for avstreamer
+            getRecordingUrl:'http://192.168.1.19:8080/app/recordings/',
+            videoUrl: 'http://192.168.1.19:8090/webcamvid.mjpeg',
+            audioUrl: 'http://192.168.1.19:8090/webcamsound.mp3',
             enabled: true, //Important property for angular service initialization
             startRecordEvent: 'record',
             recordingDoneEvent: 'recordingdone',
@@ -64,8 +64,8 @@ module.exports= {
         },
         {
             serviceType:'walky', //Important property for angular service initialization
-            sockUrl:'http://192.168.1.11:8080/walky', // socketIO endpoint for walky 
-            enabled: true, //Important property for angular service initialization
+            sockUrl:'http://192.168.1.19:8080/walky', // socketIO endpoint for walky 
+            enabled: false, //Important property for angular service initialization
             goFwdEvent: "goFwd", // Client triggered event to go Forward
             goBkdEvent: "goBkd", // Client triggered event to go Backward
             goLftEvent: "goLft", // Client triggered event to go Left
@@ -77,7 +77,7 @@ module.exports= {
         {
             serviceType:'ambient', //Important property for angular service initialization
             sockUrl:'http://192.168.1.11:8080/ambient', // socketIO endpoint for ambient
-            enabled: true, //Important property for angular service initialization
+            enabled: false, //Important property for angular service initialization
             ambientEvent: 'ambientdata'
         }
     ]
