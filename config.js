@@ -65,7 +65,7 @@ module.exports= {
         {
             serviceType:'walky', //Important property for angular service initialization
             sockUrl:'http://192.168.1.19:8080/walky', // socketIO endpoint for walky 
-            enabled: false, //Important property for angular service initialization
+            enabled: true, //Important property for angular service initialization
             goFwdEvent: "goFwd", // Client triggered event to go Forward
             goBkdEvent: "goBkd", // Client triggered event to go Backward
             goLftEvent: "goLft", // Client triggered event to go Left
@@ -77,7 +77,7 @@ module.exports= {
         {
             serviceType:'ambient', //Important property for angular service initialization
             sockUrl:'http://192.168.1.11:8080/ambient', // socketIO endpoint for ambient
-            enabled: false, //Important property for angular service initialization
+            enabled: true, //Important property for angular service initialization
             ambientEvent: 'ambientdata'
         }
     ]
